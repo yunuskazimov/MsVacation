@@ -1,9 +1,8 @@
 package az.xazar.msvacation.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Builder
@@ -21,5 +20,6 @@ public class VacationDto {
     private String fileName;
 
     //@SuppressWarnings("java:S1948")
+    @JsonIgnore
     private MultipartFile file;
 }
