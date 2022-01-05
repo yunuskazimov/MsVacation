@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDate;
-
 @Builder
 @Data
 @AllArgsConstructor
@@ -15,13 +13,13 @@ import java.time.LocalDate;
 public class VacationDto {
     private Long id;
     private Long userId;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private String startDate;
+    private String endDate;
     private String result;
     private boolean isDeleted;
     private Long fileId;
     private String fileName;
 
-    @SuppressWarnings("java:S1948")
+    //@SuppressWarnings("java:S1948")
     private MultipartFile file;
 }
