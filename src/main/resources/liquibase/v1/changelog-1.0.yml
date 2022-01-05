@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: Create Business Trip table
+      id: Create Vacation table
       author: Yunus Kazimov
       changes:
         - createTable:
@@ -16,9 +16,6 @@ databaseChangeLog:
               - column:
                   name: user_id
                   type: bigint
-              - column:
-                  name: note
-                  type: varchar(32)
               - column:
                   name: start_date
                   type: timestamp
@@ -41,4 +38,4 @@ databaseChangeLog:
                   name: updated_at
                   type: timestamp
             schemaName: public
-            tableName: business_trip
+            tableName: vacation
