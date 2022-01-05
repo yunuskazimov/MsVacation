@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: Create Business Trip table
+      author: Yunus Kazimov
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    unique: true
+                    nullable: true
+              - column:
+                  name: user_id
+                  type: bigint
+              - column:
+                  name: note
+                  type: varchar(32)
+              - column:
+                  name: start_date
+                  type: timestamp
+              - column:
+                  name: end_date
+                  type: timestamp
+              - column:
+                  name: result
+                  type: varchar(32)
+              - column:
+                  name: is_deleted
+                  type: boolean
+              - column:
+                  name: scanned_file
+                  type: varchar(32)
+              - column:
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: updated_at
+                  type: timestamp
+            schemaName: public
+            tableName: business_trip
