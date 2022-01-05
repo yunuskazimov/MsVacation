@@ -5,14 +5,14 @@ spring:
     url: jdbc:postgresql://localhost:5400/vacations
   jpa:
     hibernate:
-      ddl-auto: none
-    generate-ddl: false
+      ddl-auto: update
+    generate-ddl: true
     properties:
       dialect: org.hibernate.dialect.PostgreSQLDialect
 
   liquibase:
     change-log: classpath:liquibase/changelog-master.yml
-    enabled: true
+    enabled: false
 
 server:
   port: 8044

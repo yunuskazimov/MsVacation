@@ -27,10 +27,8 @@ public class VacationController {
 
     @PostMapping(value = "/file", consumes = {"multipart/form-data"})
     @ApiOperation(value = "Add User File to MsMinio")
-    public VacationDto createWithFile(
-            @ModelAttribute VacationDto vacationDto) {
-        log.info("create With File started controller with {}",
-                kv("fileDto", vacationDto));
+    public VacationDto createWithFile(@ModelAttribute VacationDto vacationDto) {
+        log.info("create With File started controller with {}", kv("fileDto", vacationDto));
         return service.create(vacationDto);
     }
 
@@ -38,8 +36,7 @@ public class VacationController {
     @ApiOperation(value = "Edit User File to MsMinio")
     public VacationDto editWithFile(@PathVariable Long id,
                                         @ModelAttribute VacationDto vacationDto) {
-        log.info("edit With File started controller with {}",
-                kv("vacation", vacationDto));
+        log.info("edit With File started controller with {}", kv("vacation", vacationDto));
         return service.edit(id, vacationDto);
     }
 

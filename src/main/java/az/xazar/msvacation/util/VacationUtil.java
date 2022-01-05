@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-
 public class VacationUtil {
     private final VacationRepo vacationRepo;
 
@@ -27,8 +26,8 @@ public class VacationUtil {
                 .orElseThrow(() -> new VacationNotFoundException(ErrorCodes.NOT_FOUND));
     }
 
-    public VacationEntity findVacationByUserId(Long userId) {
-        return vacationRepo.findByUserId(userId)
+    public void findVacationByUserId(Long userId) {
+        vacationRepo.findByUserId(userId)
                 .orElseThrow(() -> new VacationNotFoundException(ErrorCodes.NOT_FOUND));
     }
 }
