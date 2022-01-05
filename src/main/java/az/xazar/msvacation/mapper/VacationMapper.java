@@ -15,11 +15,11 @@ public interface VacationMapper {
 
     @Mapping(target = "file", ignore = true)
     @Mapping(target = "isDeleted", source = "deleted")
-    VacationDto toBusinessTripDto(VacationEntity entity);
+    VacationDto toVacationDto(VacationEntity entity);
 
-    List<VacationDto> toBusinessTripDtoList(List<VacationEntity> entities);
+    List<VacationDto> toVacationDtoList(List<VacationEntity> entities);
 
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
-    VacationEntity toBusinessTripEntity(VacationDto dto);
+    VacationEntity toVacationEntity(VacationDto dto);
 }
