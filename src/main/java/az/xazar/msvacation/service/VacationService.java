@@ -1,13 +1,16 @@
 package az.xazar.msvacation.service;
 
+import az.xazar.msvacation.model.PageDto;
 import az.xazar.msvacation.model.VacationDto;
-
-import java.util.List;
+import az.xazar.msvacation.model.VacationGetDto;
+import org.springframework.data.domain.Page;
 
 public interface VacationService {
     VacationDto create(VacationDto vacationDto);
 
     VacationDto edit(Long id, VacationDto vacationDto);
+
+    VacationDto editResult(Long id, String result);
 
     String delete(Long id);
 
@@ -15,7 +18,7 @@ public interface VacationService {
 
     String getFileUrlById(Long id);
 
-    List<VacationDto> getList();
+    Page<VacationGetDto> getList(PageDto page);
 
-    List<VacationDto> getByUserId(Long userid);
+    Page<VacationGetDto> getByUserId(Long userid, PageDto page);
 }

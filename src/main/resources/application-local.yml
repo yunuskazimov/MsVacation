@@ -1,8 +1,8 @@
 spring:
   datasource:
-    username: ${POSTGRES_USERNAME}
-    password: ${POSTGRES_PASSWORD}
-    url: ${MS_VACATION_URL}
+    username: xazar1
+    password: xazar1
+    url: jdbc:postgresql://localhost:5400/vacations
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,18 +15,18 @@ spring:
     enabled: false
 
 server:
-  port: ${MS_VACATION_PORT}
+  port: 8044
 
 client:
   minio:
     int:
-      url: ${CLIENT_MS_MINIO_URL}
+      url: http://localhost:8053/int/api/file
 
   users:
     int:
-      url: ${CLINET_MS_USER_URL}
+      url: http://localhost:8051/int/api/user/id
 
   permission:
     int:
-      url: ${CLIENT_MS_PERMISSION_URL}
+      url: http://localhost:8052/int/api/permission
 

@@ -1,12 +1,12 @@
 package az.xazar.msvacation.util;
 
-import az.xazar.msvacation.entity.VacationEntity;
-import az.xazar.msvacation.error.ErrorCodes;
+import az.xazar.msvacation.dao.entity.VacationEntity;
+import az.xazar.msvacation.dao.repository.VacationRepo;
+import az.xazar.msvacation.exception.ErrorCodes;
 import az.xazar.msvacation.exception.VacationNotFoundException;
-import az.xazar.msvacation.repository.VacationRepo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class VacationUtil {
@@ -21,13 +21,17 @@ public class VacationUtil {
                 .orElseThrow(() -> new VacationNotFoundException(ErrorCodes.NOT_FOUND));
     }
 
-    public List<VacationEntity> findVacationListByUserId(Long userId) {
-        return vacationRepo.findAllByUserId(userId)
-                .orElseThrow(() -> new VacationNotFoundException(ErrorCodes.NOT_FOUND));
+    public Page<VacationEntity> findVacationListByUserId(Long userId, Pageable pageable) {
+        Page<VacationEntity> entityList = vacationRepo.findAllByUserId(userId, pageable).get();
+        if (entityList.isEmpty()) {
+            throw new VacationNotFoundException(ErrorCodes.NOT_FOUND);
+        } else {
+            return entityList;
+        }
     }
 
-    public void findVacationByUserId(Long userId) {
-        vacationRepo.findByUserId(userId)
-                .orElseThrow(() -> new VacationNotFoundException(ErrorCodes.NOT_FOUND));
-    }
+//    public void findVacationByUserId(Long userId) {
+//        vacationRepo.findByUserId(userId)
+//                .orElseThrow(() -> new VacationNotFoundException(ErrorCodes.NOT_FOUND));
+//    }
 }

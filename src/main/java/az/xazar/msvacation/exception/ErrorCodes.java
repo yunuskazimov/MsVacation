@@ -1,4 +1,4 @@
-package az.xazar.msvacation.error;
+package az.xazar.msvacation.exception;
 
 public final class ErrorCodes {
 

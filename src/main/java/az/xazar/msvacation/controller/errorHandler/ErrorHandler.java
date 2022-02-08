@@ -1,4 +1,4 @@
-package az.xazar.msvacation.error;
+package az.xazar.msvacation.controller.errorHandler;
 
 import az.xazar.msvacation.exception.VacationNotFoundException;
 import az.xazar.msvacation.model.ErrorDto;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import static az.xazar.msvacation.error.ErrorCodes.NOT_FOUND;
-import static az.xazar.msvacation.error.ErrorCodes.UNEXPECTED_EXCEPTION;
+import static az.xazar.msvacation.exception.ErrorCodes.NOT_FOUND;
+import static az.xazar.msvacation.exception.ErrorCodes.UNEXPECTED_EXCEPTION;
 
 
 @ControllerAdvice

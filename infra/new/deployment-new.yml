@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/component: ms-vacation
+  name: ingress-nginx.backend.ms-vacation
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: ms-vacation
+replicas: 1
+template:
+  metadata:
+  labels:
+    app.kubernetes.io/component: ms-vacation
+  spec:
+  containers:
+    - env:
+        - name: MS_VACATION_URL
+          valueFrom:
+            secretKeyRef:
+              key: MS_VACATION_URL
+              name: ms.auth.secrets
+        - name: POSTGRES_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_USERNAME
+              name: ms.auth.secrets
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_PASSWORD
+              name: ms.auth.secrets
+        - name: MS_VACATION_PORT
+          valueFrom:
+            secretKeyRef:
+              key: MS_VACATION_PORT
+              name: ms.auth.secrets
+        - name: CLINET_MS_USER_URL
+          valueFrom:
+            secretKeyRef:
+              key: CLINET_MS_USER_URL
+              name: ms.auth.secrets
+        - name: CLIENT_MS_MINIO_URL
+          valueFrom:
+            secretKeyRef:
+              key: CLIENT_MS_MINIO_URL
+              name: ms.auth.secrets
+        - name: CLIENT_MS_PERMISSION_URL
+          valueFrom:
+            secretKeyRef:
+              key: CLIENT_MS_PERMISSION_URL
+              name: ms.auth.secrets
+      name: ms-vacation
+      image: yunuskazimov94/ms-vacation
+      ports:
+        - name: http
+          containerPort: 8044
+          protocol: TCP
+
+#    {{- end }}
+#    livenessProbe:
+#      httpGet:
+#        path: /healthz
+#        port: {{ .Values.defaultBackend.port }}
+#        scheme: HTTP
+#      initialDelaySeconds: {{ .Values.defaultBackend.livenessProbe.initialDelaySeconds }}
+#      periodSeconds: {{ .Values.defaultBackend.livenessProbe.periodSeconds }}
+#      timeoutSeconds: {{ .Values.defaultBackend.livenessProbe.timeoutSeconds }}
+#      successThreshold: {{ .Values.defaultBackend.livenessProbe.successThreshold }}
+#      failureThreshold: {{ .Values.defaultBackend.livenessProbe.failureThreshold }}
+#    readinessProbe:
+#      httpGet:
+#        path: /healthz
+#        port: {{ .Values.defaultBackend.port }}
+#        scheme: HTTP
+#      initialDelaySeconds: {{ .Values.defaultBackend.readinessProbe.initialDelaySeconds }}
+#      periodSeconds: {{ .Values.defaultBackend.readinessProbe.periodSeconds }}
+#      timeoutSeconds: {{ .Values.defaultBackend.readinessProbe.timeoutSeconds }}
+#      successThreshold: {{ .Values.defaultBackend.readinessProbe.successThreshold }}
+#      failureThreshold: {{ .Values.defaultBackend.readinessProbe.failureThreshold }}
+
+
+#  {{- if .Values.defaultBackend.nodeSelector }}
+#  nodeSelector: {{ toYaml .Values.defaultBackend.nodeSelector | nindent 8 }}
+#  {{- end }}
+#  serviceAccountName: {{ template "ingress-nginx.defaultBackend.serviceAccountName" . }}
+#  {{- if .Values.defaultBackend.tolerations }}
