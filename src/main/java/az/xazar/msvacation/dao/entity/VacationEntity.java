@@ -1,5 +1,6 @@
-package az.xazar.msvacation.entity;
+package az.xazar.msvacation.dao.entity;
 
+import az.xazar.msvacation.model.Result;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,9 @@ public class VacationEntity {
     private Long userId;
     private LocalDate startDate;
     private LocalDate endDate;
-    private String result;
-    private boolean isDeleted;
+    @Enumerated(EnumType.STRING)
+    private Result result;
+    private boolean deleted;
     private Long fileId;
     private String fileName;
 
